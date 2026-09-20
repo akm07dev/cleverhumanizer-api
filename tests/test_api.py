@@ -110,9 +110,9 @@ async def test_sends_correct_headers() -> None:
     assert sent_headers["X-Client-Fingerprint"] == "aabbccdd11223344"
 
 
-async def test_retry_on_419() -> None:
-    """Provider should invalidate session and retry once on HTTP 419."""
-    expired_response = _make_fake_response(419)
+async def test_retry_on_419_or_403() -> None:
+    """Provider should invalidate session and retry once on HTTP 419 or 403."""
+    expired_response = _make_fake_response(403)
     ok_post_response = _make_fake_response(200, {"job_id": "job123"})
     ok_get_response = _make_fake_response(200, {"status": "completed", "data": {"text": "done"}})
     

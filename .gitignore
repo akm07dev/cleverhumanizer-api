@@ -7,3 +7,7 @@ pytest-cache-files*/
 *.py[cod]
 dist/
 build/
+
+*.log
+*.err
+*.out

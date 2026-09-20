@@ -1,9 +1,13 @@
+import logging
+
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import load_settings
 from .models import RewriteRequest, RewriteResponse
 from .providers import CleverHumanizerProvider, ProviderError
+
+logging.basicConfig(level=logging.INFO)
 
 settings = load_settings()
 provider = CleverHumanizerProvider(settings)
